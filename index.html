@@ -117,33 +117,101 @@
             font-weight: 400;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.8rem;
-            margin-bottom: 3rem;
+        .slider-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            background: var(--secondary);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
         }
 
         .gallery-item {
+            display: none;
             width: 100%;
-            border-radius: 2px;
-            overflow: hidden;
-            background: var(--secondary);
-        }
-
-        .gallery-item:nth-child(odd) {
-            aspect-ratio: 16/9;
-            grid-column: span 2;
-        }
-
-        .gallery-item:nth-child(even) {
-            aspect-ratio: 4/5;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .gallery-item.active {
+            display: block;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: background 0.3s;
+            border: none;
+            padding: 0;
+        }
+
+        .slider-dot.active {
+            background: var(--accent);
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.3);
+            color: white;
+            border: none;
+            padding: 0.6rem 0.8rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(0,0,0,0.6);
+        }
+
+        .slider-arrow.prev {
+            left: 1rem;
+        }
+
+        .slider-arrow.next {
+            right: 1rem;
+        }
+
+        .slider-counter {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            background: rgba(0,0,0,0.4);
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 2px;
+            font-size: 0.75rem;
+            z-index: 10;
         }
 
         /* PRICING */
@@ -296,10 +364,6 @@
                 font-size: 2rem;
             }
 
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
             .contact-methods {
                 flex-direction: column;
             }
@@ -313,7 +377,7 @@
         <div class="logo">Abjayan</div>
         <nav class="header-nav">
             <a href="#gallery">Gallery</a>
-            <a href="#pricing">Pricing</a>
+            <a href="#pricing">How It Works</a>
             <a href="#contact">Contact</a>
         </nav>
     </div>
@@ -323,43 +387,71 @@
     <!-- HERO -->
     <section class="hero">
         <h1>Vintage Vehicles on <span class="accent">Film</span></h1>
-        <p class="hero-description">I'm photographing vintage cars on analog film for my portfolio. It's free. Helping me connect with other vintage car owners lets me keep shooting and expanding my work.</p>
+        <p class="hero-description">Shooting vintage cars on analog. Free for you. Helps me build my portfolio. If you know other car owners, connecting me with them would be great.</p>
     </section>
 
     <!-- GALLERY -->
     <section id="gallery" class="gallery-section">
         <h2 class="gallery-title">Gallery</h2>
-        <div class="gallery-grid">
-            <!-- Replace IMAGE_URL_1 through IMAGE_URL_10 with your Imgur links -->
-            <div class="gallery-item">
-                <img src="IMAGE_URL_1" alt="Shot 1">
+        <div class="slider-container">
+            <div class="slider-wrapper">
+                <!-- IMAGE 1 -->
+                <div class="gallery-item active">
+                    <img src="IMAGE_URL_1" alt="Shot 1">
+                </div>
+                <!-- IMAGE 2 -->
+                <div class="gallery-item">
+                    <img src="IMAGE_URL_2" alt="Shot 2">
+                </div>
+                <!-- IMAGE 3 -->
+                <div class="gallery-item">
+                    <img src="IMAGE_URL_3" alt="Shot 3">
+                </div>
+                <!-- IMAGE 4 -->
+                <div class="gallery-item">
+                    <img src="IMAGE_URL_4" alt="Shot 4">
+                </div>
+                <!-- IMAGE 5 -->
+                <div class="gallery-item">
+                    <img src="IMAGE_URL_5" alt="Shot 5">
+                </div>
+                <!-- IMAGE 6 -->
+                <div class="gallery-item">
+                    <img src="IMAGE_URL_6" alt="Shot 6">
+                </div>
+                <!-- IMAGE 7 -->
+                <div class="gallery-item">
+                    <img src="IMAGE_URL_7" alt="Shot 7">
+                </div>
+                <!-- IMAGE 8 -->
+                <div class="gallery-item">
+                    <img src="IMAGE_URL_8" alt="Shot 8">
+                </div>
+                <!-- IMAGE 9 -->
+                <div class="gallery-item">
+                    <img src="IMAGE_URL_9" alt="Shot 9">
+                </div>
+                <!-- IMAGE 10 -->
+                <div class="gallery-item">
+                    <img src="IMAGE_URL_10" alt="Shot 10">
+                </div>
             </div>
-            <div class="gallery-item">
-                <img src="IMAGE_URL_2" alt="Shot 2">
+            <div class="slider-counter">
+                <span id="current-slide">1</span> / 10
             </div>
-            <div class="gallery-item">
-                <img src="IMAGE_URL_3" alt="Shot 3">
-            </div>
-            <div class="gallery-item">
-                <img src="IMAGE_URL_4" alt="Shot 4">
-            </div>
-            <div class="gallery-item">
-                <img src="IMAGE_URL_5" alt="Shot 5">
-            </div>
-            <div class="gallery-item">
-                <img src="IMAGE_URL_6" alt="Shot 6">
-            </div>
-            <div class="gallery-item">
-                <img src="IMAGE_URL_7" alt="Shot 7">
-            </div>
-            <div class="gallery-item">
-                <img src="IMAGE_URL_8" alt="Shot 8">
-            </div>
-            <div class="gallery-item">
-                <img src="IMAGE_URL_9" alt="Shot 9">
-            </div>
-            <div class="gallery-item">
-                <img src="IMAGE_URL_10" alt="Shot 10">
+            <button class="slider-arrow prev" onclick="prevSlide()">‹</button>
+            <button class="slider-arrow next" onclick="nextSlide()">›</button>
+            <div class="slider-nav">
+                <button class="slider-dot active" onclick="goToSlide(0)"></button>
+                <button class="slider-dot" onclick="goToSlide(1)"></button>
+                <button class="slider-dot" onclick="goToSlide(2)"></button>
+                <button class="slider-dot" onclick="goToSlide(3)"></button>
+                <button class="slider-dot" onclick="goToSlide(4)"></button>
+                <button class="slider-dot" onclick="goToSlide(5)"></button>
+                <button class="slider-dot" onclick="goToSlide(6)"></button>
+                <button class="slider-dot" onclick="goToSlide(7)"></button>
+                <button class="slider-dot" onclick="goToSlide(8)"></button>
+                <button class="slider-dot" onclick="goToSlide(9)"></button>
             </div>
         </div>
     </section>
@@ -371,16 +463,16 @@
         <div class="pricing-grid">
             <div class="price-card">
                 <h3>Free</h3>
-                <p class="price-description">I shoot because I need the photos. You get prints and scans.</p>
+                <p class="price-description">You get prints + digital scans. I get photos for my portfolio.</p>
                 <ul class="price-features">
-                    <li>Two rolls of film</li>
-                    <li>About 2 hours total (1 hour per roll)</li>
+                    <li>2 rolls of film</li>
+                    <li>About 2 hours</li>
                     <li>Physical prints</li>
-                    <li>Zip file with digital scans</li>
+                    <li>Digital zip file</li>
                 </ul>
                 <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1);">
-                    <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;"><strong>Want to contribute?</strong></p>
-                    <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5;">Know other vintage car owners? Connect me with them. 35mm film donations help too.</p>
+                    <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;"><strong>If you want to help:</strong></p>
+                    <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5;">Know other car owners? That's the biggest help. Film donations are cool too.</p>
                 </div>
             </div>
         </div>
@@ -389,7 +481,7 @@
     <!-- ABOUT -->
     <section class="about">
         <h2>About</h2>
-        <p>I'm 15, shooting on IIT Madras campus. Interested in documenting vintage vehicles on film. It's for my portfolio, not a business.</p>
+        <p>I'm 15, shooting on IIT Madras campus. Getting into analog photography and documenting vintage cars. This is for my portfolio.</p>
     </section>
 
     <!-- CONTACT -->
@@ -414,4 +506,43 @@
 </main>
 
 <footer>
-    <p><a href="https://instagram.com/analogbyabjayan" target="_blank" style="color: var(--accent); text-decoration:
+    <p><a href="https://instagram.com/analogbyabjayan" target="_blank" style="color: var(--accent); text-decoration: none;">@analogbyabjayan</a> | IIT Madras | 2026</p>
+    <p style="margin-top: 0.5rem;">Shot on Kodak, Fuji & Agfa</p>
+</footer>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.gallery-item');
+const dots = document.querySelectorAll('.slider-dot');
+const totalSlides = slides.length;
+
+function showSlide(n) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    slides[n].classList.add('active');
+    dots[n].classList.add('active');
+    document.getElementById('current-slide').textContent = n + 1;
+    currentSlide = n;
+}
+
+function nextSlide() {
+    showSlide((currentSlide + 1) % totalSlides);
+}
+
+function prevSlide() {
+    showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+}
+
+function goToSlide(n) {
+    showSlide(n);
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+});
+</script>
+
+</body>
+</html>
