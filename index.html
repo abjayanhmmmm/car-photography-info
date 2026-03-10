@@ -461,4 +461,78 @@
                     <li>Digital zip file</li>
                 </ul>
                 <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1);">
-                    <p style="font-size: 0.85rem; color: var(--mu
+                    <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;"><strong>If you want to help:</strong></p>
+                    <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5;">Know other car owners? That's the biggest help. Film donations are cool too.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+        <h2>About</h2>
+        <p>I'm 15, shooting on IIT Madras campus. Getting into analog photography and documenting vintage cars. This is for my portfolio.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-methods">
+            <div class="contact-item">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">
+                    <a href="mailto:abjayandiscord@gmail.com">abjayandiscord@gmail.com</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">WhatsApp</div>
+                <div class="contact-value">
+                    <a href="https://wa.me/19797092600" target="_blank">+1 (979) 709-2600</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p><a href="https://instagram.com/analogbyabjayan" target="_blank" style="color: var(--accent); text-decoration: none;">@analogbyabjayan</a> | IIT Madras | 2026</p>
+    <p style="margin-top: 0.5rem;">Shot on Kodak, Fuji & Agfa</p>
+</footer>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.gallery-item');
+const dots = document.querySelectorAll('.slider-dot');
+const totalSlides = slides.length;
+
+function showSlide(n) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    slides[n].classList.add('active');
+    dots[n].classList.add('active');
+    document.getElementById('current-slide').textContent = n + 1;
+    currentSlide = n;
+}
+
+function nextSlide() {
+    showSlide((currentSlide + 1) % totalSlides);
+}
+
+function prevSlide() {
+    showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+}
+
+function goToSlide(n) {
+    showSlide(n);
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+});
+</script>
+
+</body>
+</html>
