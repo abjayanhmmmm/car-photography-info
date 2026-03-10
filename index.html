@@ -397,47 +397,39 @@
             <div class="slider-wrapper">
                 <!-- IMAGE 1 -->
                 <div class="gallery-item active">
-                    <img src="IMAGE_URL_1" alt="Shot 1">
+                    <img src="https://i.postimg.cc/BnFwfT4Q/000000190022.jpg" alt="Shot 1">
                 </div>
                 <!-- IMAGE 2 -->
                 <div class="gallery-item">
-                    <img src="IMAGE_URL_2" alt="Shot 2">
+                    <img src="https://i.postimg.cc/gJsTBGdy/000000190003.jpg" alt="Shot 2">
                 </div>
                 <!-- IMAGE 3 -->
                 <div class="gallery-item">
-                    <img src="IMAGE_URL_3" alt="Shot 3">
+                    <img src="https://i.postimg.cc/W46WhsdW/20251015-9009-500T-ECN2-20.jpg" alt="Shot 3">
                 </div>
                 <!-- IMAGE 4 -->
                 <div class="gallery-item">
-                    <img src="IMAGE_URL_4" alt="Shot 4">
+                    <img src="https://i.postimg.cc/05Ht6WNN/20251015-9009-500T-ECN2-23.jpg" alt="Shot 4">
                 </div>
                 <!-- IMAGE 5 -->
                 <div class="gallery-item">
-                    <img src="IMAGE_URL_5" alt="Shot 5">
+                    <img src="https://i.postimg.cc/1tmWFb6z/F1000002.jpg" alt="Shot 5">
                 </div>
                 <!-- IMAGE 6 -->
                 <div class="gallery-item">
-                    <img src="IMAGE_URL_6" alt="Shot 6">
+                    <img src="https://i.postimg.cc/Qx9fcQBd/F1000021.jpg" alt="Shot 6">
                 </div>
                 <!-- IMAGE 7 -->
                 <div class="gallery-item">
-                    <img src="IMAGE_URL_7" alt="Shot 7">
+                    <img src="https://i.postimg.cc/7LytH5ZD/20251015-9009-500T-ECN2-15.jpg" alt="Shot 7">
                 </div>
                 <!-- IMAGE 8 -->
                 <div class="gallery-item">
-                    <img src="IMAGE_URL_8" alt="Shot 8">
-                </div>
-                <!-- IMAGE 9 -->
-                <div class="gallery-item">
-                    <img src="IMAGE_URL_9" alt="Shot 9">
-                </div>
-                <!-- IMAGE 10 -->
-                <div class="gallery-item">
-                    <img src="IMAGE_URL_10" alt="Shot 10">
+                    <img src="https://i.postimg.cc/1zcCfy86/20251015-9009-500T-ECN2-21.jpg" alt="Shot 8">
                 </div>
             </div>
             <div class="slider-counter">
-                <span id="current-slide">1</span> / 10
+                <span id="current-slide">1</span> / 8
             </div>
             <button class="slider-arrow prev" onclick="prevSlide()">‹</button>
             <button class="slider-arrow next" onclick="nextSlide()">›</button>
@@ -450,8 +442,6 @@
                 <button class="slider-dot" onclick="goToSlide(5)"></button>
                 <button class="slider-dot" onclick="goToSlide(6)"></button>
                 <button class="slider-dot" onclick="goToSlide(7)"></button>
-                <button class="slider-dot" onclick="goToSlide(8)"></button>
-                <button class="slider-dot" onclick="goToSlide(9)"></button>
             </div>
         </div>
     </section>
@@ -471,78 +461,4 @@
                     <li>Digital zip file</li>
                 </ul>
                 <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1);">
-                    <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;"><strong>If you want to help:</strong></p>
-                    <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5;">Know other car owners? That's the biggest help. Film donations are cool too.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="about">
-        <h2>About</h2>
-        <p>I'm 15, shooting on IIT Madras campus. Getting into analog photography and documenting vintage cars. This is for my portfolio.</p>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-methods">
-            <div class="contact-item">
-                <div class="contact-label">Email</div>
-                <div class="contact-value">
-                    <a href="mailto:abjayandiscord@gmail.com">abjayandiscord@gmail.com</a>
-                </div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-label">WhatsApp</div>
-                <div class="contact-value">
-                    <a href="https://wa.me/19797092600" target="_blank">+1 (979) 709-2600</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<footer>
-    <p><a href="https://instagram.com/analogbyabjayan" target="_blank" style="color: var(--accent); text-decoration: none;">@analogbyabjayan</a> | IIT Madras | 2026</p>
-    <p style="margin-top: 0.5rem;">Shot on Kodak, Fuji & Agfa</p>
-</footer>
-
-<script>
-let currentSlide = 0;
-const slides = document.querySelectorAll('.gallery-item');
-const dots = document.querySelectorAll('.slider-dot');
-const totalSlides = slides.length;
-
-function showSlide(n) {
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    
-    slides[n].classList.add('active');
-    dots[n].classList.add('active');
-    document.getElementById('current-slide').textContent = n + 1;
-    currentSlide = n;
-}
-
-function nextSlide() {
-    showSlide((currentSlide + 1) % totalSlides);
-}
-
-function prevSlide() {
-    showSlide((currentSlide - 1 + totalSlides) % totalSlides);
-}
-
-function goToSlide(n) {
-    showSlide(n);
-}
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') nextSlide();
-    if (e.key === 'ArrowLeft') prevSlide();
-});
-</script>
-
-</body>
-</html>
+                    <p style="font-size: 0.85rem; color: var(--mu
