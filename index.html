@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abjayan - Vintage Vehicle Photography</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #faf8f6;
+            --text: #1a1a1a;
+            --accent: #c4a766;
+            --secondary: #e8dcc8;
+            --muted: #888;
+            --border: #ddd;
+        }
+
+        html, body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Crimson Text', serif;
+            line-height: 1.7;
+            letter-spacing: 0.3px;
+        }
+
+        /* HEADER */
+        header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: rgba(250, 248, 246, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .header-nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .header-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* MAIN */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* HERO */
+        .hero {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .accent {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        /* GALLERY */
+        .gallery-section {
+            margin-bottom: 4rem;
+        }
+
+        .gallery-title {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            width: 100%;
+            border-radius: 2px;
+            overflow: hidden;
+            background: var(--secondary);
+        }
+
+        .gallery-item:nth-child(odd) {
+            aspect-ratio: 16/9;
+            grid-column: span 2;
+        }
+
+        .gallery-item:nth-child(even) {
+            aspect-ratio: 4/5;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* PRICING */
+        .pricing-section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary);
+            letter-spacing: -0.5px;
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            padding: 2rem;
+            background: var(--secondary);
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .price-card h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .price-description {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .price-features {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .price-features li {
+            list-style: none;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ABOUT */
+        .about {
+            background: var(--secondary);
+            padding: 2.5rem;
+            border-radius: 2px;
+            margin-bottom: 4rem;
+        }
+
+        .about h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .about p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            color: var(--muted);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .contact-value a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .contact-value a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo">Abjayan</div>
+        <nav class="header-nav">
+            <a href="#gallery">Gallery</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Vintage Vehicles on <span class="accent">Film</span></h1>
+        <p class="hero-description">I'm photographing vintage cars on analog film for my portfolio. It's free. Helping me connect with other vintage car owners lets me keep shooting and expanding my work.</p>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="gallery-section">
+        <h2 class="gallery-title">Gallery</h2>
+        <div class="gallery-grid">
+            <!-- Replace IMAGE_URL_1 through IMAGE_URL_10 with your Imgur links -->
+            <div class="gallery-item">
+                <img src="IMAGE_URL_1" alt="Shot 1">
+            </div>
+            <div class="gallery-item">
+                <img src="IMAGE_URL_2" alt="Shot 2">
+            </div>
+            <div class="gallery-item">
+                <img src="IMAGE_URL_3" alt="Shot 3">
+            </div>
+            <div class="gallery-item">
+                <img src="IMAGE_URL_4" alt="Shot 4">
+            </div>
+            <div class="gallery-item">
+                <img src="IMAGE_URL_5" alt="Shot 5">
+            </div>
+            <div class="gallery-item">
+                <img src="IMAGE_URL_6" alt="Shot 6">
+            </div>
+            <div class="gallery-item">
+                <img src="IMAGE_URL_7" alt="Shot 7">
+            </div>
+            <div class="gallery-item">
+                <img src="IMAGE_URL_8" alt="Shot 8">
+            </div>
+            <div class="gallery-item">
+                <img src="IMAGE_URL_9" alt="Shot 9">
+            </div>
+            <div class="gallery-item">
+                <img src="IMAGE_URL_10" alt="Shot 10">
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="pricing-section">
+        <h2 class="section-title">How It Works</h2>
+        
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Free</h3>
+                <p class="price-description">I shoot because I need the photos. You get prints and scans.</p>
+                <ul class="price-features">
+                    <li>Two rolls of film</li>
+                    <li>About 2 hours total (1 hour per roll)</li>
+                    <li>Physical prints</li>
+                    <li>Zip file with digital scans</li>
+                </ul>
+                <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;"><strong>Want to contribute?</strong></p>
+                    <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5;">Know other vintage car owners? Connect me with them. 35mm film donations help too.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+        <h2>About</h2>
+        <p>I'm 15, shooting on IIT Madras campus. Interested in documenting vintage vehicles on film. It's for my portfolio, not a business.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-methods">
+            <div class="contact-item">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">
+                    <a href="mailto:abjayandiscord@gmail.com">abjayandiscord@gmail.com</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">WhatsApp</div>
+                <div class="contact-value">
+                    <a href="https://wa.me/19797092600" target="_blank">+1 (979) 709-2600</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p><a href="https://instagram.com/analogbyabjayan" target="_blank" style="color: var(--accent); text-decoration:
